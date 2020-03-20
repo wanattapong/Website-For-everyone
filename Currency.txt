@@ -1,0 +1,27 @@
+	<option value="">-- กรุณาเลือกประเทศ --</option>
+	<option value="US">สหรัฐอเมริกา</option>
+	<option value="GB">สหราชอาณาจักร</option>
+	<option value="EU">ยูโรโซน</option>
+	<option value="DE">เยอรมนี</option>
+	<option selected="selected" value="JP">ญี่ปุ่น (ต่อ 100 เยน)</option>
+	<option value="HK">ฮ่องกง</option>
+	<option value="MY">มาเลเซีย</option>
+	<option value="SG">สิงคโปร์</option>
+	<option value="BN">บรูไนดารุสซาลาม</option>
+	<option value="PH">ฟิลิปปินส์</option>
+	<option value="ID">อินโดนีเซีย (ต่อ 1000 รูเปีย)</option>
+	<option value="IN">อินเดีย</option>
+	<option value="CH">สวิตเซอร์แลนด์</option>
+	<option value="NL">เนเธอร์แลนด์</option>
+	<option value="AU">ออสเตรเลีย</option>
+	<option value="NZ">นิวซีแลนด์</option>
+	<option value="PK">ปากีสถาน</option>
+	<option value="CA">แคนาดา</option>
+	<option value="AT">ออสเตรีย</option>
+	<option value="FR">ฝรั่งเศส</option>
+	<option value="BE">เบลเยี่ยม</option>
+	<option value="SE">สวีเดน</option>
+	<option value="DK">เดนมาร์ก</option>
+	<option value="NO">นอร์เวย์</option>
+	<option value="IT">อิตาลี</option>
+	<option value="CN">จีน</option>
