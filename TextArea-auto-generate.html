@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="form-row" id="content">
+        <div class="form-group col-md-3">
+            <label class="mr-sm-2" for="name_ProjectHead">วัตถุประสงค์</label>
+        </div>
+        <div class="form-group col-md-5">
+            <textarea class="form-control" rows="5" id="comment" name="peopleObjective" required></textarea>
+        </div>
+    </div>
+</body>
+<script>
+    // TextArea auto generate 
+    $('#content').on('change keyup keydown paste cut', 'textarea', function () {
+        $(this).height(0).height(this.scrollHeight);
+    }).find('textarea').change();
+</script>
+
+</html>
