@@ -4,6 +4,9 @@
 #     'django_user_agents', #เช็ค บราวเซอ์
 # ]
 
+# MIDDLEWARE = [
+#     'django_user_agents.middleware.UserAgentMiddleware',
+# ]
 
 # Let's assume that the visitor uses an iPhone...
 request.user_agent.is_mobile # returns True
