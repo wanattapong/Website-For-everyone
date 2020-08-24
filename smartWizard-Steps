@@ -1,0 +1,1039 @@
+{% extends "includes/base_admin.html" %}
+{% load humanize %}
+
+{% block content %}
+<!-- CSS -->
+<link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet"
+    type="text/css" />
+
+<style>
+    .active-green {
+        color: #00C853;
+
+    }
+
+    .active-yellow {
+        color: #FFD600;
+    }
+
+    .active-red {
+        color: #F44336;
+    }
+
+    .active-orange {
+        color: orange;
+    }
+
+    /* ##################### */
+    #button {
+        display: inline-block;
+        background-color: #FF9800;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border-radius: 4px;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        transition: background-color .3s,
+            opacity .5s, visibility .5s;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+    }
+
+    #button::after {
+        content: "\f077";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 2em;
+        line-height: 50px;
+        color: #fff;
+    }
+
+    #button:hover {
+        cursor: pointer;
+        background-color: #333;
+    }
+
+    #button:active {
+        background-color: #555;
+    }
+
+    #button.show {
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- Back to top button -->
+<a id="button"></a>
+<h4>Tables Search isn't responsive</h4>
+<br>
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <!-- <div class="card">
+            <div class="card-body"> -->
+        <div id="smartwizard" class="sw sw-justified sw-theme-arrows" style="background-color: white;">
+            <!-- style=" background-color: white;" -->
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link inactive done" href="#step-1">
+                        <strong>Step 1</strong> Sample collection
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link inactive done" href="#step-2">
+                        <strong>Step 2</strong> Storage
+                    </a>
+                </li>
+            </ul>
+            <br>
+            <div class="tab-content" style="height: 140px;">
+                <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1"
+                    style="position: static; left: auto; display: none;">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card ">
+                                <div class="card-body">
+                                    <h4><strong>Detial......</strong></h4>
+                                    <hr>
+                                    <!-- <div class="table-responsive"> -->
+                                    <table id="table_Detial" class="table table-striped" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th class="th-sm">Sample ID
+                                                </th>
+                                                <th class="th-sm">Diposit ID
+                                                </th>
+                                                <th class="th-sm">NBT ID
+                                                </th>
+                                                <th class="th-sm">Total Specimen
+                                                </th>
+                                                <th class="th-sm">Herberium/Fungarium
+                                                </th>
+                                                <th class="th-sm">BBH Code
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>6</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>6</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>6</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>6</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <!-- <div class="card"> -->
+                            <!-- Extended default form grid -->
+                            <form>
+                                <h5><strong>Taxonomy Detail</strong></h5>
+                                <hr>
+                                <!-- Grid row -->
+                                <div class="form-row"
+                                    style="background-color: white; border-style: solid; border-color: #8dc9ec; border-width: 10px 1px;">
+                                    <!-- Original Code -->
+                                    <div class="form-group col-md-6 mt-2">
+                                        <label for="original_Code">Original Code :</label>
+                                        <input type="text" class="form-control" id="original_Code"
+                                            placeholder="original_Code">
+                                    </div>
+                                    <!-- Herbraium Code -->
+                                    <div class="form-group col-md-6 mt-2">
+                                        <label for="herbraium_Code">Herbraium Code :</label>
+                                        <input type="text" class="form-control" id="herbraium_Code"
+                                            placeholder="Auto enerate" readonly>
+                                    </div>
+                                    <!-- New Specuce -->
+                                    <div class="form-group col-md-6">
+                                        <label for="new_Specuce">New Specuce :</label>
+                                        <input type="text" class="form-control" id="new_Specuce"
+                                            placeholder="new_Specuce">
+                                    </div>
+                                    <!-- Accept -->
+                                    <div class="form-group col-md-6">
+                                        <label for="accept">Accept :</label>
+                                        <select class="form-control selectpicker show-menu-arrow show-tick">
+                                            <option class="selectpickerStyleOption" selected disabled>Open this select
+                                                menu
+                                            </option>
+                                            </option>
+                                            <option class="selectpickerStyleOption"
+                                                data-content="<span class='badge badge-success'>Accept</span>">
+                                                Accept</option>
+                                            <option class="selectpickerStyleOption"
+                                                data-content="<span class='badge badge-danger'>Not Accept</span>">
+                                                Not Accept</option>
+                                        </select>
+
+                                        <!-- <input type="text" class="form-control" id="accept" -->
+                                        <!-- placeholder="accept" > -->
+                                    </div>
+                                </div>
+                                <!-- Grid row -->
+                                <br>
+                                <!-- Grid row -->
+                                <div class="form-row">
+                                    <!-- New Specuce -->
+                                    <div class="form-group col-lg-12 col-md-12 text-center">
+                                        <img src="https://cdn.britannica.com/78/195378-050-978E87F5/Herbarium-sheet-evening-primrose.jpg"
+                                            alt="thumbnail" class="img-thumbnail" style="width: 300px;">
+                                    </div>
+                                </div>
+                                <!-- Grid row -->
+
+                                <!-- Grid row -->
+                                <div class="form-row"
+                                    style="background-color: white; border-style: solid; border-color: #8dc9ec; border-width: 10px 1px;">
+                                    <!-- TypeMo -->
+                                    <div class="form-group col-md-6 mt-2">
+                                        <label for="typeMo">TypeMo :</label>
+                                        <select class="form-control mr-sm-2 selectpicker " id="typeMo"
+                                            data-title="TypeMo" data-style="" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                TypeMo
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                TypeMo
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                TypeMo
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                TypeMo
+                                            </option>
+                                            <option class="selectpickerStyleOption" data-icon="fa-heart">Ketchup
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Phylum : -->
+                                    <div class="form-group col-md-6 mt-2">
+                                        <label for="phylum">Phylum :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="phylum"
+                                            data-title="Phylum" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Phylum
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Phylum
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Phylum
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Phylum
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Division : -->
+                                    <div class="form-group col-md-6">
+                                        <label for="division">Division :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="division"
+                                            data-title="Division" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Division
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Division
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Division
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Division
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Subphylum : -->
+                                    <div class="form-group col-md-6">
+                                        <label for="subphylum">Subphylum :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="subphylum"
+                                            data-title="Subphylum" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subphylum
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subphylum
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subphylum
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subphylum
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Order : -->
+                                    <div class="form-group col-md-6">
+                                        <label for="order">Order :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="order" data-title="Order"
+                                            data-max-options="1" multiple data-live-search="true" name="selectCompany"
+                                            required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Order
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Order
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Order
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Order
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Family : -->
+                                    <div class="form-group col-md-6">
+                                        <label for="family">Family :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="family"
+                                            data-title="Family" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Family
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Family
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Family
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Family
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Genus : : -->
+                                    <div class="form-group col-md-6">
+                                        <label for="genus">Genus :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="genus" data-title="Genus"
+                                            data-max-options="1" multiple data-live-search="true" name="selectCompany"
+                                            required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Genus
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Genus
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Genus
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Genus
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Epithet : -->
+                                    <div class="form-group col-md-6">
+                                        <label for="epithet">Epithet :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="epithet"
+                                            data-title="Epithet" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Epithet
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Epithet
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Epithet
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Epithet
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Varity Name : -->
+                                    <div class="form-group col-md-6">
+                                        <label for="varity_Name">Varity Name :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="varity_Name"
+                                            data-title="Varity Name" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Varity Name
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Varity Name
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Varity Name
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Varity Name
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Anamorphi State : -->
+                                    <div class="form-group col-md-6">
+                                        <label for="anamorphi_State">Anamorphi State :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="anamorphi_State"
+                                            data-title="Anamorphi State" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Anamorphi State
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Anamorphi State
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Anamorphi State
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Anamorphi State
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Fungal Group : -->
+                                    <div class="form-group col-md-6">
+                                        <label for="fungal_Group">Fungal Group :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="fungal_Group"
+                                            data-title="Fungal Group" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Fungal Group
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Fungal Group
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Fungal Group
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Fungal Group
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Authority Name : -->
+                                    <div class="form-group col-md-6">
+                                        <label for="authority_Name">Authority Name :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="authority_Name"
+                                            data-title="Authority Name" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Authority Name
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Authority Name
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Authority Name
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Authority Name
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Grid row -->
+
+                                <!-- Grid row -->
+                                <div class="form-row"
+                                    style="background-color: white; border-style: solid; border-color: #8dc9ec; border-width: 10px 1px;">
+                                    <!-- Identifier -->
+                                    <div class="form-group col-md-6">
+                                        <label for="identifier">Identifier :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="identifier"
+                                            data-title="Identifier" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Identifier
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Identifier
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Identifier
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Identifier
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Collectors -->
+                                    <div class="form-group col-md-6">
+                                        <label for="collectors">Collectors :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="collectors"
+                                            data-title="Collectors" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Collectors
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Collectors
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Collectors
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Collectors
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Isolate -->
+                                    <div class="form-group col-md-6">
+                                        <label for="isolate">Isolate :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="Isolate"
+                                            data-title="Isolate" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Isolate
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Isolate
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Isolate
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Isolate
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Collect Date -->
+                                    <div class="form-group col-md-6">
+                                        <label for="collect_Date">Collect Date :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="collect_Date Date"
+                                            data-title="Collect Date" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Collect Date
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Collect Date
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Collect Date
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Collect Date
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Grid row -->
+
+                                <!-- Grid row -->
+                                <div class="form-row"
+                                    style="border-style: solid; border-color: #8dc9ec; border-width: 10px 1px;">
+                                    <!-- Country -->
+                                    <div class="form-group col-md-6">
+                                        <label for="country">Country :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="country"
+                                            data-title="Country" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Country
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Country
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Country
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Country
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Country_th -->
+                                    <div class="form-group col-md-6">
+                                        <label for="country_th">Country(ไทย):</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="country_th"
+                                            data-title="Country_th" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                country_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                country_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                country_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                country_th
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Province -->
+                                    <div class="form-group col-md-6">
+                                        <label for="province">Province:</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="province"
+                                            data-title="Province" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Province
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Province
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Province
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Province
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Province_th -->
+                                    <div class="form-group col-md-6">
+                                        <label for="province_th">Province(ไทย):</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="province_th"
+                                            data-title="Province_th" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                province_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                province_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                province_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                province_th
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Amphoe -->
+                                    <div class="form-group col-md-6">
+                                        <label for="amphoe">Amphoe:</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="amphoe"
+                                            data-title="Amphoe" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Amphoe
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Amphoe
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Amphoe
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Amphoe
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Amphoe_th -->
+                                    <div class="form-group col-md-6">
+                                        <label for="amphoe_th">Amphoe(ไทย):</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="amphoe_th"
+                                            data-title="Amphoe" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                amphoe_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                amphoe_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                amphoe_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                amphoe_th
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- District -->
+                                    <div class="form-group col-md-6">
+                                        <label for="district">District:</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="district"
+                                            data-title="District" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                District
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                District
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                District
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                District
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- District_th -->
+                                    <div class="form-group col-md-6">
+                                        <label for="district_th">District(ไทย):</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="district_th"
+                                            data-title="District_th" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                District_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                District_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                District_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                District_th
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Subsite -->
+                                    <div class="form-group col-md-6">
+                                        <label for="subsite">Subsite :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="subsite"
+                                            data-title="Subsite" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subsite
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subsite
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subsite
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subsite
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Subsite_th -->
+                                    <div class="form-group col-md-6">
+                                        <label for="subsite_th">Subsite(ไทย) :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="subsite_th"
+                                            data-title="Subsite_th" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subsite_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subsite_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subsite_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Subsite_th
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Substrate -->
+                                    <div class="form-group col-md-6">
+                                        <label for="substrate">Substrate :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="substrate"
+                                            data-title="Substrate" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Substrate
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Substrate
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Substrate
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Substrate
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Substrate_th -->
+                                    <div class="form-group col-md-6">
+                                        <label for="substrate_th">Substrate(ไทย) :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="substrate_th"
+                                            data-title="Substrate_th" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Substrate_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Substrate_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Substrate_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Substrate_th
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Habitat -->
+                                    <div class="form-group col-md-6">
+                                        <label for="habitat">Habitat :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="habitat"
+                                            data-title="Habitat" data-max-options="1" multiple data-live-search="true"
+                                            name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Habitat
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Habitat
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Habitat
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Habitat
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- Habitat_th -->
+                                    <div class="form-group col-md-6">
+                                        <label for="habitat_th">Habitat(ไทย) :</label>
+                                        <select class="form-control mr-sm-2 selectpicker" id="habitat_th"
+                                            data-title="Habitat_th" data-max-options="1" multiple
+                                            data-live-search="true" name="selectCompany" required>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Habitat_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Habitat_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Habitat_th
+                                            </option>
+                                            <option class="selectpickerStyleOption" value="">
+                                                Habitat_th
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Grid row -->
+                            </form>
+                            <!-- Extended default form grid -->
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <div class="card-body">
+                            <label for="note">Note :</label>
+                            <textarea class="form-control" name="note" id="note" cols="auto" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2"
+                    style="position: static; left: auto;  display: none;">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="card ">
+                                <div class="card-body">
+                                    <h3>Step 2 Storage</h3>
+                                    <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum
+                                        has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown
+                                        printer took a galley of type and scrambled it to make a type specimen book. It
+                                        has
+                                        survived not only five centuries, but also the leap into electronic typesetting,
+                                        remaining essentially unchanged. It was popularised in the 1960s with the
+                                        release of
+                                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 text-right">
+                <a href="{% url 'SmsBackEnd:smsbackend_main_operator' %}"><button class="btn btn-dark">Back</button></a>
+                <button class="btn btn-secondary" id="prev-btn">Previous</button>
+                <button class="btn btn-success" id="next-btn">Next</button>
+                <button class="btn btn-danger" id="reset-btn">Reset</button>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+
+<script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js"
+    type="text/javascript"></script>
+
+<script type="text/javascript">
+    // Scroll Back To Top Button
+    var btn = $('#button');
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 400) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, '300');
+    });
+    // Scroll Back To Top Button
+
+    $(document).ready(function () {
+        // Data Table
+        var table = $('#table_Detial').DataTable({
+            "scrollY": 450,
+            "scrollX": true,
+            "scrollCollapse": true,
+            // "paging": false
+        });
+        // End Data Table
+
+        // Toolbar extra buttons
+        // var btnCancel = $('<button></button>').text('Cancel')
+        //     .addClass('btn btn-danger')
+        //     .on('click', function () { $('#smartwizard').smartWizard("reset"); });
+        // var btnBack = $('<button></button>').text('Back')
+        //     .addClass('btn btn-dark')
+        //     .on('click', function () { window.location.href = "{% url 'SmsBackEnd:smsbackend_main_operator' %}" });
+
+        // // Step show event
+        // $("#smartwizard").on("showStep", function (e, anchorObject, stepNumber, stepDirection, stepPosition) {
+        //     $("#prev-btn").removeClass('disabled');
+        //     $("#next-btn").removeClass('disabled');
+        //     if (stepPosition === 'first') {
+        //         $("#prev-btn").addClass('disabled');
+        //         $("#next-btn").addClass('disabled');
+        //     } else if (stepPosition === 'last') {
+        //         $("#next-btn").addClass('disabled');
+        //     } else {
+        //         $("#prev-btn").removeClass('disabled');
+        //         $("#next-btn").removeClass('disabled');
+        //     }
+        // });
+
+        // Smart Wizard
+        $('#smartwizard').smartWizard({
+            selected: 0,
+            theme: 'arrows',
+            transition: {
+                animation: 'slide-vertical', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
+            },
+            toolbarSettings: {
+                showNextButton: false, // show/hide a Next button
+                showPreviousButton: false, // show/hide a Previous button
+                //     toolbarPosition: 'bottom', // both bottom
+                // toolbarButtonPosition: 'left', // left, right, center
+                //     // toolbarExtraButtons: [btnCancel, btnBack]
+            }
+        });
+
+        // External Button Events
+        $("#reset-btn").on("click", function () {
+            // Reset wizard
+            $('#smartwizard').smartWizard("reset");
+            return true;
+        });
+
+        $("#prev-btn").on("click", function () {
+            // Navigate previous
+            $('#smartwizard').smartWizard("prev");
+            return true;
+        });
+
+        $("#next-btn").on("click", function () {
+            // Navigate next
+            $('#smartwizard').smartWizard("next");
+            return true;
+        });
+
+
+        // Demo Button Events
+        $("#got_to_step").on("change", function () {
+            // Go to step
+            var step_index = $(this).val() - 1;
+            $('#smartwizard').smartWizard("goToStep", step_index);
+            return true;
+        });
+
+        $("#is_justified").on("click", function () {
+            // Change Justify
+            var options = {
+                justified: $(this).prop("checked")
+            };
+
+            $('#smartwizard').smartWizard("setOptions", options);
+            return true;
+        });
+
+        $("#dark_mode").on("click", function () {
+            // Change dark mode
+            var options = {
+                darkMode: $(this).prop("checked")
+            };
+
+            $('#smartwizard').smartWizard("setOptions", options);
+            return true;
+        });
+
+
+        $("#animation").on("change", function () {
+            // Change theme
+            var options = {
+                transition: {
+                    animation: $(this).val()
+                },
+            };
+            $('#smartwizard').smartWizard("setOptions", options);
+            return true;
+        });
+
+        $("#theme_selector").on("change", function () {
+            // Change theme
+            var options = {
+                theme: $(this).val()
+            };
+            $('#smartwizard').smartWizard("setOptions", options);
+            return true;
+        });
+    });
+</script>
+{% endblock script %}
