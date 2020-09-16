@@ -1,5 +1,7 @@
 <input type="checkbox" class="custom-control-input" id="defaultChecked1"
 name="request_Mode" onclick="onlyOne(this)" checked>
+<input type="checkbox" class="custom-control-input" id="defaultChecked2"
+name="request_Mode" onclick="onlyOne(this)" checked>
 
 <scrip>
     //CheckBox only one
