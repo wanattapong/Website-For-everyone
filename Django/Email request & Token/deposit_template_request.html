@@ -1,0 +1,6 @@
+{% load i18n %}
+{% autoescape on %}
+{% trans "Hello" %} {{ user.get_full_name }},
+{% trans "Click link to confirm your requeest deposit" %},
+http://{{ domain }}{% url 'SmsBackEnd:accept_deposit_activate' ridb64=rid token=token date=date time=time %}
+{% endautoescape %}
